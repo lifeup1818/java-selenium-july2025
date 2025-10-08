@@ -45,11 +45,11 @@ public class ExcelUtils {
 		return objects;
 
 	}
-	
+
 	public static Object[][] readExcelDataInKeyValuePair(String fileName, String sheetName) {
-		Object[][] obj=null;
-		List<Map<String, String>> list= new ArrayList<>();
-				
+		Object[][] obj = null;
+		List<Map<String, String>> list = new ArrayList<>();
+
 		String filePath = GlobalIdentifier.getProjectBasePath() + "\\src\\test\\resource\\data\\" + fileName + ".xlsx";
 		File file = new File(filePath);
 
@@ -64,27 +64,27 @@ public class ExcelUtils {
 			DataFormatter df = new DataFormatter();
 			// rows
 			for (int i = 1; i < (rows + 1); i++) {
-				Map<String, String> map= new HashMap<String, String>();
-				
+				Map<String, String> map = new HashMap<String, String>();
+
 				// clms
 				for (int j = 0; j < clms; j++) {
-					//key
-					String key=df.formatCellValue(sheet.getRow(0).getCell(j));					
-					//value
-					String value=df.formatCellValue(sheet.getRow(i).getCell(j));
-					
-					map.put(key, value);					
-				}				
-				list.add(map);				
+					// key
+					String key = df.formatCellValue(sheet.getRow(0).getCell(j));
+					// value
+					String value = df.formatCellValue(sheet.getRow(i).getCell(j));
+
+					map.put(key, value);
+				}
+				list.add(map);
 			}
 			workbook.close();
-			fs.close();			
-			
-			//Excel row data store in object array
-			 obj= new Object[list.size()][1];
+			fs.close();
+
+			// Excel row data store in object array
+			obj = new Object[list.size()][1];
 			for (int i = 0; i < list.size(); i++) {
-				obj[i][0]=list.get(i);
-			}		
+				obj[i][0] = list.get(i);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

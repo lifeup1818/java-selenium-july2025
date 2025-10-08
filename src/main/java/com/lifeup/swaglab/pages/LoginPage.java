@@ -13,23 +13,23 @@ public class LoginPage {
 
 	@FindBy(id = "user-name")
 	private WebElement txtUserName;
-	
-	@FindBy (id="password")
+
+	@FindBy(id = "password")
 	private WebElement txtPassword;
-	
-	@FindBy (id="login-button")
+
+	@FindBy(id = "login-button")
 	private WebElement btnLogin;
-	
-	@FindBy (xpath="//*[contains(text(),'Username and password do not match any user in this service')]")
+
+	@FindBy(xpath = "//*[contains(text(),'Username and password do not match any user in this service')]")
 	private WebElement errorMessage;
-	
-	@FindBy (className = "login_logo")
+
+	@FindBy(className = "login_logo")
 	private WebElement loginLogo;
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		webUtils= new WebUtils(driver);
+		webUtils = new WebUtils(driver);
 	}
 
 	public void enterUserName(String userName) {
@@ -47,7 +47,7 @@ public class LoginPage {
 	public boolean isInvalidCredentilasErrorMessageDisplayed() {
 		return webUtils.isDisplayed(errorMessage, "Error Message Invalid Credentilas");
 	}
-	
+
 	public String getLoginLogo() {
 		return webUtils.getText(loginLogo, "Login Logo");
 	}

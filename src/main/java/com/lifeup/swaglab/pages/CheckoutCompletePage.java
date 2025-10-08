@@ -11,7 +11,7 @@ public class CheckoutCompletePage {
 	WebDriver driver;
 	WebUtils webUtils;
 
-	@FindBy (xpath="//*[contains(text(),'Checkout: Complete')]")
+	@FindBy(xpath = "//*[contains(text(),'Checkout: Complete')]")
 	private WebElement titleCheckoutComplete;
 
 	@FindBy(className = "complete-header")
@@ -22,11 +22,11 @@ public class CheckoutCompletePage {
 		PageFactory.initElements(driver, this);
 		webUtils = new WebUtils(driver);
 	}
-	
+
 	public boolean isCheckoutCompletePageDisplayed() {
 		return webUtils.isDisplayed(titleCheckoutComplete, "Title Checkout Complete");
 	}
-	
+
 	public String getCompleteMessage() {
 		return webUtils.getText(headerComplete, "Complete Header");
 	}

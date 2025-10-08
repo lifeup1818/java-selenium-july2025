@@ -20,9 +20,9 @@ public class CheckoutOverviewPage {
 		PageFactory.initElements(driver, this);
 		webUtils = new WebUtils(driver);
 	}
-	
+
 	public void clickOnTheFinishButton() {
-		webUtils.click(btnFinish,"Finish Button");
+		webUtils.click(btnFinish, "Finish Button");
 	}
 
 }

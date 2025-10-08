@@ -1,13 +1,16 @@
 package com.lifeup.swaglab.utils;
 
-import java.nio.channels.SelectableChannel;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class WebUtils {
+
+	private final Logger log = LogManager.getLogger(WebUtils.class);
+
 	WebDriver driver;
 	Select select;
 
@@ -22,13 +25,15 @@ public class WebUtils {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void click(WebElement element, String elementName) {
 		try {
 			element.click();
-			System.out.println("Clicked on the element:" + elementName);
+			Report.info("Clicked on the element:" + elementName);
+			log.info("Clicked on the element:" + elementName);
 		} catch (Exception e) {
-			System.out.println("Not clicked on the element:" + elementName);
+			Report.info("Not clicked on the element:" + elementName);
+			log.info("Not clicked on the element:" + elementName);
 			throw new Error("Not clicked on the element:" + elementName);
 		}
 	}
@@ -37,9 +42,11 @@ public class WebUtils {
 		try {
 			Actions actions = new Actions(driver);
 			actions.click(element).build().perform();
-			System.out.println("Clicked on the element:" + elementName);
+			Report.info("Clicked on the element:" + elementName);
+			log.info("Clicked on the element:" + elementName);
 		} catch (Exception e) {
-			System.out.println("Not clicked on the element:" + elementName);
+			Report.info("Not clicked on the element:" + elementName);
+			log.info("Not clicked on the element:" + elementName);
 			throw new Error("Not clicked on the element:" + elementName);
 		}
 	}
@@ -47,9 +54,11 @@ public class WebUtils {
 	public void sendKeys(WebElement element, String value, String elementName) {
 		try {
 			element.sendKeys(value);
-			System.out.println("Value entered in " + elementName + ":" + value);
+			Report.info("Value entered in " + elementName + ":" + value);
+			log.info("Value entered in " + elementName + ":" + value);
 		} catch (Exception e) {
-			System.out.println("Value not entered in " + elementName + ":" + value);
+			Report.info("Value not entered in " + elementName + ":" + value);
+			log.info("Value not entered in " + elementName + ":" + value);
 			throw new Error("Value not entered in " + elementName + ":" + value);
 		}
 	}
@@ -57,66 +66,78 @@ public class WebUtils {
 	public String getText(WebElement element, String elementName) {
 		try {
 			String text = element.getText();
-			System.out.println("Captured text for " + elementName + " is" + text);
+			Report.info("Captured text for " + elementName + " is" + text);
+			log.info("Captured text for " + elementName + " is" + text);
 			return text;
 		} catch (Exception e) {
-			System.out.println("Not captured text for " + elementName);
+			Report.info("Not captured text for " + elementName);
+			log.info("Not captured text for " + elementName);
 			throw new Error("Not captured text for " + elementName);
 		}
 	}
-	
+
 	public boolean isDisplayed(WebElement element, String elementName) {
 		try {
 			boolean vp = element.isDisplayed();
-			System.out.println(elementName+" Element Displayed="+vp);
+			Report.info(elementName + " Element Displayed=" + vp);
+			log.info(elementName + " Element Displayed=" + vp);
 			return vp;
 		} catch (Exception e) {
-			System.out.println(elementName+" Element not Displayed");
-			throw new Error(elementName+" Element not Displayed");
+			Report.info(elementName + " Element not Displayed");
+			log.info(elementName + " Element not Displayed");
+			throw new Error(elementName + " Element not Displayed");
 		}
 	}
-	
-	public void selectByValue(WebElement element, String value,String elementName) {
+
+	public void selectByValue(WebElement element, String value, String elementName) {
 		try {
-			select= new Select(element);
+			select = new Select(element);
 			select.selectByValue(value);
-			System.out.println(value+" :Value Selected In Element:"+elementName);
+			Report.info(value + " :Value Selected In Element:" + elementName);
+			log.info(value + " :Value Selected In Element:" + elementName);
 		} catch (Exception e) {
-			System.out.println(value+" :Value Not Selected In Element:"+elementName);
-			throw new Error(value+" :Value Not Selected In Element:"+elementName);
-		}	
+			Report.info(value + " :Value Not Selected In Element:" + elementName);
+			log.info(value + " :Value Not Selected In Element:" + elementName);
+			throw new Error(value + " :Value Not Selected In Element:" + elementName);
+		}
 	}
-	
-	public void selectByVisibleText(WebElement element, String value,String elementName) {
+
+	public void selectByVisibleText(WebElement element, String value, String elementName) {
 		try {
-			select= new Select(element);
+			select = new Select(element);
 			select.selectByVisibleText(value);
-			System.out.println(value+" :Value Selected In Element:"+elementName);
+			Report.info(value + " :Value Selected In Element:" + elementName);
+			log.info(value + " :Value Selected In Element:" + elementName);
 		} catch (Exception e) {
-			System.out.println(value+" :Value Not Selected In Element:"+elementName);
-			throw new Error(value+" :Value Not Selected In Element:"+elementName);
-		}	
+			Report.info(value + " :Value Not Selected In Element:" + elementName);
+			log.info(value + " :Value Not Selected In Element:" + elementName);
+			throw new Error(value + " :Value Not Selected In Element:" + elementName);
+		}
 	}
-	
-	public void selectByIndex(WebElement element, int index,String elementName) {
+
+	public void selectByIndex(WebElement element, int index, String elementName) {
 		try {
-			select= new Select(element);
+			select = new Select(element);
 			select.selectByIndex(index);
-			System.out.println(index+" :Value Selected In Element:"+elementName);
+			Report.info(index + " :Value Selected In Element:" + elementName);
+			log.info(index + " :Value Selected In Element:" + elementName);
 		} catch (Exception e) {
-			System.out.println(index+" :Value Not Selected In Element:"+elementName);
-			throw new Error(index+" :Value Not Selected In Element:"+elementName);
-		}	
+			Report.info(index + " :Value Not Selected In Element:" + elementName);
+			log.info(index + " :Value Not Selected In Element:" + elementName);
+			throw new Error(index + " :Value Not Selected In Element:" + elementName);
+		}
 	}
-	
+
 	public void scrollToElemet(WebElement element, String elementName) {
 		try {
-			Actions actions= new Actions(driver);
+			Actions actions = new Actions(driver);
 			actions.scrollToElement(element).build().perform();
-			System.out.println("Element scrolled successfully to:"+elementName);
+			log.info("Element scrolled successfully to:" + elementName);
+			Report.info("Element scrolled successfully to:" + elementName);
 		} catch (Exception e) {
-			System.out.println("Element Not scrolled successfully to:"+elementName);
-			throw new Error("Element Not scrolled successfully to:"+elementName);
+			Report.info("Element Not scrolled successfully to:" + elementName);
+			log.info("Element Not scrolled successfully to:" + elementName);
+			throw new Error("Element Not scrolled successfully to:" + elementName);
 		}
 	}
 

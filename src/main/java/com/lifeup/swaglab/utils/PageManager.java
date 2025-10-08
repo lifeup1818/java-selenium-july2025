@@ -16,23 +16,23 @@ public class PageManager {
 	public static ProductsPage productsPage() {
 		return new ProductsPage(GlobalIdentifier.getDriver());
 	}
-	
+
 	public static Report report() {
 		return new Report();
 	}
-	
+
 	public static Yourcart yourCartPage() {
 		return new Yourcart(GlobalIdentifier.getDriver());
 	}
-	
+
 	public static CheckoutYourInformationPage checkoutYourInformationPage() {
 		return new CheckoutYourInformationPage(GlobalIdentifier.getDriver());
 	}
-	
+
 	public static CheckoutOverviewPage checkoutOverviewPage() {
 		return new CheckoutOverviewPage(GlobalIdentifier.getDriver());
 	}
-	
+
 	public static CheckoutCompletePage checkoutcompletePage() {
 		return new CheckoutCompletePage(GlobalIdentifier.getDriver());
 	}

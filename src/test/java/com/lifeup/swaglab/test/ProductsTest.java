@@ -149,10 +149,10 @@ public class ProductsTest extends BaseClassTest {
 
 		Assert.assertEquals(actualSuccessMessage, expectedCompleteMessage);
 	}
-	
+
 	@Test
 	public void demo(String data) {
-		
+
 	}
 
 }

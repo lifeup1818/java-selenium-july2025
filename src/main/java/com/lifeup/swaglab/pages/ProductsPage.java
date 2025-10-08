@@ -33,7 +33,7 @@ public class ProductsPage {
 	public ProductsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		webUtils= new WebUtils(driver);
+		webUtils = new WebUtils(driver);
 	}
 
 	public boolean isMenuBurgerIconDisplayed() {
@@ -63,9 +63,9 @@ public class ProductsPage {
 	}
 
 	public void addProductInShoppingCart(String prodcutName) {
-		WebElement product=driver.findElement(By.xpath(
-				"//*[contains(text(),'"+prodcutName+"')]/ancestor::div[@class='inventory_item_label']/following-sibling::div//button"));
-		webUtils.click(product, prodcutName);		
+		WebElement product = driver.findElement(By.xpath("//*[contains(text(),'" + prodcutName
+				+ "')]/ancestor::div[@class='inventory_item_label']/following-sibling::div//button"));
+		webUtils.click(product, prodcutName);
 	}
 
 }
